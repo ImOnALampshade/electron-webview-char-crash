@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test Window</title>
+  </head>
+  <body>
+    <h1>Hello, world!</h1>
+
+    <webview id='webview' src="https://www.google.com/" style="width:600px;height:400px"></webview>
+
+    <script>
+      const electron = require('electron')
+
+      const { ipcRenderer } = electron
+
+      var webview = document.getElementById('webview')
+
+      webview.addEventListener('did-finish-load', function() {
+        ipcRenderer.send('loaded-webview')
+      })
+    </script>
+  </body>
+</html>
